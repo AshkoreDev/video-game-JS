@@ -1,23 +1,30 @@
-import './maps.js';
+import { emojis } from './maps.js';
 
 const canvas = document.getElementById('game');
 const game = canvas.getContext('2d');
 
 function startGame() {
 
-	// Definir donde comienza el trazo (x,y,width,height)
-	// game.fillRect(0,10,100,100);
+	let canvasSize;
+	
+	(window.innerHeight > window.innerWidth)
+		?	canvasSize = window.innerWidth * 0.75
+		:	canvasSize = window.innerHeight * 0.75;
 
-	// Borrador
-	// game.clearRect(0,0,100,50);
+	const elementsSize = canvasSize / 10;
+	
+	canvas.setAttribute('width', canvasSize);
+	canvas.setAttribute('height', canvasSize);
 
-	// Estilos del texto, debe ir antes del texto
+	console.log({canvasSize,elementsSize});
+
 	game.fillStyle = 'purple';
-	game.font = '25px Verdana';
+	game.font = elementsSize + 'px Verdana';
 	game.textAlign = 'center';
 
-	// Insertar texto ('texto',x,y)
-	game.fillText('Game',140,50);
+	for(let i=1; i<=10; i++) {
+		game.fillText(emojis['X'], elementsSize, elementsSize*i);
+	}
 
 }
 

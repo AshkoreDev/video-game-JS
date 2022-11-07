@@ -50,3 +50,5 @@ maps.push(`
   XX-----OXX
   XXXXXXXXXX
 `);
+
+export { emojis };

@@ -1,0 +1,23 @@
+## Canvas, sirve para crear gráficos con JS, renderizar elementos HTML sin necesidad que sean realmente etiquetas de HTML, sino código JS.
+
+- Debe tener un contexto para acceder a los métodos del canvas.
+
+	canvas.getContext('2d');
+
+- Definir donde comienza el trazo (x,y,width,height).
+	
+	canvas.fillRect(0,10,100,100);
+
+- Crear un borrador.
+
+	canvas.clearRect(0,0,100,50);
+
+- Agregar un texto ('texto',x,y).
+
+	canvas.fillText('Game',140,50);
+
+- Añadir estilos al texto, debe ir antes de definir el texto.
+
+	canvas.fillStyle = 'purple';
+	canvas.font = '25px Verdana';
+	canvas.textAlign = 'center';
