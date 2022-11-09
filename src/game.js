@@ -1,4 +1,4 @@
-import { emojis } from './maps.js';
+import { emojis, maps } from './maps.js';
 
 const canvas = document.getElementById('game');
 const game = canvas.getContext('2d');
@@ -16,7 +16,7 @@ function setCanvasSize() {
 	canvas.setAttribute('height', canvasSize);
 
 	elementsSize = canvasSize / 10;
-	console.log({canvasSize,elementsSize});
+	// console.log({canvasSize,elementsSize});
 
 	startGame();
 }
@@ -25,10 +25,18 @@ function startGame() {
 
 	game.fillStyle = 'purple';
 	game.font = elementsSize + 'px Verdana';
-	game.textAlign = 'center';
+	game.textAlign = 'end';
 
-	for(let i=1; i<=10; i++) {
-		game.fillText(emojis['X'], elementsSize, elementsSize * i);
+	const map = maps[0];
+  const mapRows = map.trim().split('\n');
+  const mapCols = mapRows.map(row => row.trim().split(''));
+
+	console.log(mapRows);
+
+	for (let row = 1; row <= 10; row++) {
+    for (let col = 1; col <= 10; col++) {
+      game.fillText(emojis[mapCols[row - 1][col - 1]], elementsSize * col, elementsSize * row - 6);
+		}
 	}
 }
 

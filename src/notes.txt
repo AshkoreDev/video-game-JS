@@ -21,3 +21,8 @@
 	canvas.fillStyle = 'purple';
 	canvas.font = '25px Verdana';
 	canvas.textAlign = 'center';
+
+
+## Arreglos bidimensionales, son arreglos dentro de arreglos.
+
+- 

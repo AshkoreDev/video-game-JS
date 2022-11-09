@@ -51,4 +51,4 @@ maps.push(`
   XXXXXXXXXX
 `);
 
-export { emojis };
+export { emojis, maps };
