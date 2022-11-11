@@ -1,5 +1,10 @@
 import { emojis, maps } from './maps.js';
 
+const upBtn = document.getElementById('upBtn');
+const leftBtn = document.getElementById('leftBtn');
+const rightBtn = document.getElementById('rightBtn');
+const downBtn = document.getElementById('downBtn');
+
 const canvas = document.getElementById('game');
 const game = canvas.getContext('2d');
 
@@ -16,8 +21,6 @@ function setCanvasSize() {
 	canvas.setAttribute('height', canvasSize);
 
 	elementsSize = canvasSize / 10;
-	// console.log({canvasSize,elementsSize});
-
 	startGame();
 }
 
@@ -52,5 +55,37 @@ function startGame() {
 	});
 }
 
+
+function moveUp() {
+	console.log('arriba');
+}
+
+function moveLeft() {
+	console.log('izquierda');
+}
+
+function moveRight() {
+	console.log('derecha');
+}
+
+function moveDown() {
+	console.log('abajo');
+}
+
+function moveByKeys(event) {
+	// console.log('key ', event);
+
+	if (event.key == 'ArrowUp') moveUp();
+	else if (event.key == 'ArrowLeft') moveLeft();
+	else if (event.key == 'ArrowRight') moveRight();
+	else if (event.key == 'ArrowDown') moveDown();
+}
+
 window.addEventListener('load', setCanvasSize);
 window.addEventListener('resize', setCanvasSize);
+
+upBtn.addEventListener('click', moveUp);
+leftBtn.addEventListener('click', moveLeft);
+rightBtn.addEventListener('click', moveRight);
+downBtn.addEventListener('click', moveDown);
+window.addEventListener('keydown', moveByKeys);
