@@ -31,13 +31,25 @@ function startGame() {
   const mapRows = map.trim().split('\n');
   const mapCols = mapRows.map(row => row.trim().split(''));
 
-	console.log(mapRows);
+	// console.log(mapRows);
 
-	for (let row = 1; row <= 10; row++) {
-    for (let col = 1; col <= 10; col++) {
-      game.fillText(emojis[mapCols[row - 1][col - 1]], elementsSize * col, elementsSize * row - 6);
-		}
-	}
+	// for (let row = 1; row <= 10; row++) {
+ //    for (let col = 1; col <= 10; col++) {
+ //      game.fillText(emojis[mapCols[row - 1][col - 1]], elementsSize * col, elementsSize * row - 6);
+	// 	}
+	// }
+
+	mapCols.forEach((row, rowI) => {
+
+		row.forEach((col, colI) => {
+
+			const emoji = emojis[col];
+			const posX = elementsSize * (colI + 1);
+			const posY = elementsSize * (rowI + 0.9);
+
+			game.fillText(emoji, posX, posY);
+		});
+	});
 }
 
 window.addEventListener('load', setCanvasSize);
