@@ -8,8 +8,11 @@ const downBtn = document.getElementById('downBtn');
 const canvas = document.getElementById('game');
 const game = canvas.getContext('2d');
 
+
 let canvasSize;
 let elementsSize;
+const playerPosition = {x: undefined, y: undefined};
+
 
 function setCanvasSize() {
 
@@ -50,26 +53,51 @@ function startGame() {
 			const posX = elementsSize * (colI + 1);
 			const posY = elementsSize * (rowI + 0.9);
 
+			if(col == 'O') {
+
+				playerPosition.x = posX;
+				playerPosition.y = posY;
+				console.log(playerPosition);
+			}
+
 			game.fillText(emoji, posX, posY);
 		});
 	});
+
+	movePlayer();
 }
 
+function movePlayer() {
+	
+	game.fillText(':)', playerPosition.x, playerPosition.y);
+}
 
 function moveUp() {
 	console.log('arriba');
+	playerPosition.y -= elementsSize;
+	movePlayer();
+	console.log(playerPosition);
 }
 
 function moveLeft() {
 	console.log('izquierda');
+	playerPosition.x -= elementsSize;
+	movePlayer();
+	console.log(playerPosition);
 }
 
 function moveRight() {
 	console.log('derecha');
+	playerPosition.x += elementsSize;
+	movePlayer();
+	console.log(playerPosition);
 }
 
 function moveDown() {
 	console.log('abajo');
+	playerPosition.y += elementsSize;
+	movePlayer();
+	console.log(playerPosition);
 }
 
 function moveByKeys(event) {
