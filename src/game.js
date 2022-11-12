@@ -45,6 +45,8 @@ function startGame() {
 	// 	}
 	// }
 
+	game.clearRect(0,0,canvasSize,canvasSize);
+
 	mapCols.forEach((row, rowI) => {
 
 		row.forEach((col, colI) => {
@@ -53,7 +55,7 @@ function startGame() {
 			const posX = elementsSize * (colI + 1);
 			const posY = elementsSize * (rowI + 0.9);
 
-			if(col == 'O') {
+			if(col == 'O' && !playerPosition.x && !playerPosition.y) {
 
 				playerPosition.x = posX;
 				playerPosition.y = posY;
@@ -68,35 +70,35 @@ function startGame() {
 }
 
 function movePlayer() {
-	
+	game.fillText('', playerPosition.x-10, playerPosition.y-10);
 	game.fillText(':)', playerPosition.x, playerPosition.y);
 }
 
 function moveUp() {
 	console.log('arriba');
 	playerPosition.y -= elementsSize;
-	movePlayer();
+	startGame();
 	console.log(playerPosition);
 }
 
 function moveLeft() {
 	console.log('izquierda');
 	playerPosition.x -= elementsSize;
-	movePlayer();
+	startGame();
 	console.log(playerPosition);
 }
 
 function moveRight() {
 	console.log('derecha');
 	playerPosition.x += elementsSize;
-	movePlayer();
+	startGame();
 	console.log(playerPosition);
 }
 
 function moveDown() {
 	console.log('abajo');
 	playerPosition.y += elementsSize;
-	movePlayer();
+	startGame();
 	console.log(playerPosition);
 }
 
