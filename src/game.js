@@ -13,6 +13,7 @@ let canvasSize;
 let elementsSize;
 const playerPosition = { x: undefined, y: undefined };
 const giftPosition = { x: undefined, y: undefined };
+let enemiesPosition = [];
 
 
 function setCanvasSize() {
@@ -38,6 +39,7 @@ function startGame() {
   const mapRows = map.trim().split('\n');
   const mapCols = mapRows.map(row => row.trim().split(''));
 
+  enemiesPosition = [];
 	game.clearRect(0,0,canvasSize,canvasSize);
 
 	mapCols.forEach((row, rowI) => {
@@ -57,8 +59,14 @@ function startGame() {
 
 				giftPosition.x = posX;
 				giftPosition.y = posY;
-			}
 
+			} else if(col == 'X') {
+
+				enemiesPosition.push({
+					x: posX,
+					y: posY
+				});
+			}
 
 			game.fillText(emoji, posX, posY);
 		});
@@ -72,12 +80,20 @@ function movePlayer() {
 	const giftCollisionX = playerPosition.x.toFixed(2) == giftPosition.x.toFixed(2);
 	const giftCollisionY = playerPosition.y.toFixed(2) == giftPosition.y.toFixed(2);
 
+	const enemiesCollision = enemiesPosition.find(enemy => {
+		const enemiesCollisionX = enemy.x == playerPosition.x;
+		const enemiesCollisionY = enemy.y == playerPosition.y;
+
+		return enemiesCollisionX && enemiesCollisionY;
+	});
+
 	if (giftCollisionX && giftCollisionY) {
 
 		console.log('Pasaste de nivel.');
 		
-	} else if() {
+	} else if(enemiesCollision) {
 
+		console.log('Perdiste.');
 	}
 
 	game.fillText(':)', playerPosition.x, playerPosition.y);
