@@ -81,8 +81,9 @@ function movePlayer() {
 	const giftCollisionY = playerPosition.y.toFixed(2) == giftPosition.y.toFixed(2);
 
 	const enemiesCollision = enemiesPosition.find(enemy => {
-		const enemiesCollisionX = enemy.x == playerPosition.x;
-		const enemiesCollisionY = enemy.y == playerPosition.y;
+		
+		const enemiesCollisionX = enemy.x.toFixed(2) == playerPosition.x.toFixed(2);
+		const enemiesCollisionY = enemy.y.toFixed(2) == playerPosition.y.toFixed(2);
 
 		return enemiesCollisionX && enemiesCollisionY;
 	});
