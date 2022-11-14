@@ -37,6 +37,13 @@ function startGame() {
 	game.textAlign = 'end';
 
 	const map = maps[level];
+
+	if (!map) {
+
+		gameWin();
+		return;
+	}
+
   const mapRows = map.trim().split('\n');
   const mapCols = mapRows.map(row => row.trim().split(''));
 
@@ -88,6 +95,11 @@ function levelFail() {
 	console.log('Perdiste.');
 	level--;
 	startGame();
+}
+
+function gameWin() {
+	
+	console.log('Ganaste el juego.');
 }
 
 function movePlayer() {
