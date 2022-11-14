@@ -10,6 +10,7 @@ const game = canvas.getContext('2d');
 
 
 let level = 0;
+let lives = 3;
 let canvasSize;
 let elementsSize;
 const playerPosition = { x: undefined, y: undefined };
@@ -81,6 +82,7 @@ function startGame() {
 	});
 
 	movePlayer();
+	console.log('level: ' +level);
 }
 
 function levelWin()  {
@@ -93,8 +95,18 @@ function levelWin()  {
 function levelFail() {
 
 	console.log('Perdiste.');
-	level--;
+	lives--;
+
+	if (lives <= 0) {
+
+		level = 0;
+		lives = 3;
+	}
+
+	playerPosition.x = undefined;
+	playerPosition.y = undefined;
 	startGame();
+	console.log('lives: ' + lives);
 }
 
 function gameWin() {
