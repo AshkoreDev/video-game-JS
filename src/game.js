@@ -5,6 +5,9 @@ const leftBtn = document.getElementById('leftBtn');
 const rightBtn = document.getElementById('rightBtn');
 const downBtn = document.getElementById('downBtn');
 const lives = document.getElementById('lives');
+const time = document.getElementById('time');
+const record = document.getElementById('record');
+const message = document.getElementById('message');
 
 
 const canvas = document.getElementById('game');
@@ -102,8 +105,17 @@ function levelFail() {
 
 	if (livesPlayer <= 0) {
 
+		message.innerText = 'GAME OVER';
 		level = 0;
-		livesPlayer = 3;
+		// livesPlayer = 3;
+
+		setTimeout(() => {
+			
+			livesPlayer = 3;
+			startGame();
+			message.innerText = '';
+
+		} , 1000);
 	}
 
 	playerPosition.x = undefined;
