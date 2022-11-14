@@ -9,6 +9,7 @@ const canvas = document.getElementById('game');
 const game = canvas.getContext('2d');
 
 
+let level = 0;
 let canvasSize;
 let elementsSize;
 const playerPosition = { x: undefined, y: undefined };
@@ -35,7 +36,7 @@ function startGame() {
 	game.font = elementsSize + 'px Verdana';
 	game.textAlign = 'end';
 
-	const map = maps[0];
+	const map = maps[level];
   const mapRows = map.trim().split('\n');
   const mapCols = mapRows.map(row => row.trim().split(''));
 
@@ -75,6 +76,20 @@ function startGame() {
 	movePlayer();
 }
 
+function levelWin()  {
+
+	console.log('Subiste de nivel.');
+	level++;
+	startGame();
+}
+
+function levelFail() {
+
+	console.log('Perdiste.');
+	level--;
+	startGame();
+}
+
 function movePlayer() {
 
 	const giftCollisionX = playerPosition.x.toFixed(2) == giftPosition.x.toFixed(2);
@@ -88,14 +103,8 @@ function movePlayer() {
 		return enemiesCollisionX && enemiesCollisionY;
 	});
 
-	if (giftCollisionX && giftCollisionY) {
-
-		console.log('Pasaste de nivel.');
-		
-	} else if(enemiesCollision) {
-
-		console.log('Perdiste.');
-	}
+	if (giftCollisionX && giftCollisionY)	levelWin();
+	else if(enemiesCollision) levelFail();
 
 	game.fillText(':)', playerPosition.x, playerPosition.y);
 }
