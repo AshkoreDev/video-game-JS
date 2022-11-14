@@ -4,13 +4,15 @@ const upBtn = document.getElementById('upBtn');
 const leftBtn = document.getElementById('leftBtn');
 const rightBtn = document.getElementById('rightBtn');
 const downBtn = document.getElementById('downBtn');
+const lives = document.getElementById('lives');
+
 
 const canvas = document.getElementById('game');
 const game = canvas.getContext('2d');
 
 
 let level = 0;
-let lives = 3;
+let livesPlayer = 3;
 let canvasSize;
 let elementsSize;
 const playerPosition = { x: undefined, y: undefined };
@@ -33,6 +35,7 @@ function setCanvasSize() {
 
 function startGame() {
 
+	lives.innerText = 'Vidas: ' + '❤️'.repeat(livesPlayer);
 	game.fillStyle = 'purple';
 	game.font = elementsSize + 'px Verdana';
 	game.textAlign = 'end';
@@ -95,18 +98,19 @@ function levelWin()  {
 function levelFail() {
 
 	console.log('Perdiste.');
-	lives--;
+	livesPlayer--;
 
-	if (lives <= 0) {
+	if (livesPlayer <= 0) {
 
 		level = 0;
-		lives = 3;
+		livesPlayer = 3;
 	}
 
 	playerPosition.x = undefined;
 	playerPosition.y = undefined;
 	startGame();
-	console.log('lives: ' + lives);
+	console.log('Vidas: ' + '❤️'.repeat(livesPlayer));
+	
 }
 
 function gameWin() {
