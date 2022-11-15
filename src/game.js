@@ -14,13 +14,17 @@ const canvas = document.getElementById('game');
 const game = canvas.getContext('2d');
 
 
-let level = 0;
-let livesPlayer = 3;
 let canvasSize;
 let elementsSize;
 const playerPosition = { x: undefined, y: undefined };
 const giftPosition = { x: undefined, y: undefined };
 let enemiesPosition = [];
+
+let level = 0;
+let livesPlayer = 3;
+let timeStart;
+let timePlayer;
+let timeInterval;
 
 
 function setCanvasSize() {
@@ -38,7 +42,7 @@ function setCanvasSize() {
 
 function startGame() {
 
-	lives.innerText = 'Vidas: ' + '❤️'.repeat(livesPlayer);
+	lives.innerText = '❤️'.repeat(livesPlayer);
 	game.fillStyle = 'purple';
 	game.font = elementsSize + 'px Verdana';
 	game.textAlign = 'end';
@@ -49,6 +53,11 @@ function startGame() {
 
 		gameWin();
 		return;
+	}
+
+	if (!timeStart) {
+		timeStart = Date.now();
+		timeInterval = setInterval(showTime ,100);
 	}
 
   const mapRows = map.trim().split('\n');
@@ -88,7 +97,6 @@ function startGame() {
 	});
 
 	movePlayer();
-	console.log('level: ' +level);
 }
 
 function levelWin()  {
@@ -101,13 +109,14 @@ function levelWin()  {
 function levelFail() {
 
 	console.log('Perdiste.');
+	level--;
 	livesPlayer--;
 
 	if (livesPlayer <= 0) {
 
 		message.innerText = 'GAME OVER';
+		timeStart = undefined;
 		level = 0;
-		// livesPlayer = 3;
 
 		setTimeout(() => {
 			
@@ -116,18 +125,27 @@ function levelFail() {
 			message.innerText = '';
 
 		} , 1000);
+
+	} else if(level < 0){
+
+		level = 0;
 	}
 
 	playerPosition.x = undefined;
 	playerPosition.y = undefined;
 	startGame();
 	console.log('Vidas: ' + '❤️'.repeat(livesPlayer));
-	
 }
 
 function gameWin() {
 	
 	console.log('Ganaste el juego.');
+	clearInterval(timeInterval);
+}
+
+function showTime() {
+
+	time.innerText = Date.now() - timeStart;
 }
 
 function movePlayer() {
