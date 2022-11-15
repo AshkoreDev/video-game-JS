@@ -27,6 +27,8 @@ let timePlayer;
 let timeInterval;
 
 
+
+
 function setCanvasSize() {
 
 	(window.innerHeight > window.innerWidth)
@@ -43,6 +45,7 @@ function setCanvasSize() {
 function startGame() {
 
 	lives.innerText = '❤️'.repeat(livesPlayer);
+	
 	game.fillStyle = 'purple';
 	game.font = elementsSize + 'px Verdana';
 	game.textAlign = 'end';
@@ -56,8 +59,10 @@ function startGame() {
 	}
 
 	if (!timeStart) {
+
 		timeStart = Date.now();
 		timeInterval = setInterval(showTime ,100);
+		record.innerText = localStorage.getItem('record_time');
 	}
 
   const mapRows = map.trim().split('\n');
@@ -141,11 +146,32 @@ function gameWin() {
 	
 	console.log('Ganaste el juego.');
 	clearInterval(timeInterval);
+
+	const recordTime = localStorage.getItem('record_time');
+	const playerTime = Date.now() - timeStart;
+
+	if (recordTime) {
+
+		if (recordTime >= playerTime) {
+			
+			localStorage.setItem('record_time', playerTime);
+			message.innerText = 'Tu record fue de: ' + playerTime + ' Superaste el record.';
+
+		} else {
+
+			message.innerText = 'Tu record fue de: ' + playerTime + ' No superaste el record.';
+		}
+
+	} else {
+
+		localStorage.setItem('record_time', playerTime);
+		message.innerText = 'Tu record fue de: ' + playerTime;
+	}
 }
 
 function showTime() {
 
-	time.innerText = Date.now() - timeStart;
+	time.innerText =  Date.now() - timeStart;
 }
 
 function movePlayer() {

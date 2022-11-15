@@ -25,4 +25,11 @@
 
 ## Arreglos bidimensionales, son arreglos dentro de arreglos.
 
-- 
+
+## LocalStorage, es el almacenamiento local en los navegadores.
+
+- localStorage.getItem(), se usa para leer alguna información que se tenga dentro del localStorage.
+
+- localStorage.setItem(), se usa para guardar una variable por primera vez. Recibe dos parámetros ('nombre de la variable', 'contenido de la variable').
+
+- localStorage.removeItem(), se usa para borrar las variables guardadas en el navegador.
