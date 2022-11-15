@@ -36,7 +36,7 @@ function setCanvasSize() {
 		:	canvasSize = window.innerHeight * 0.75;
 
 	canvasSize = Number(canvasSize.toFixed(0));
-	
+
 	canvas.setAttribute('width', canvasSize);
 	canvas.setAttribute('height', canvasSize);
 
@@ -44,7 +44,6 @@ function setCanvasSize() {
 	playerPosition.x = undefined;
 	playerPosition.y = undefined;
 	startGame();
-	console.log(canvasSize, elementsSize);
 }
 
 function startGame() {
@@ -105,7 +104,7 @@ function startGame() {
 			game.fillText(emoji, posX, posY);
 		});
 	});
-	console.log(playerPosition.x, playerPosition.y);
+
 	movePlayer();
 }
 
@@ -144,7 +143,6 @@ function levelFail() {
 	playerPosition.x = undefined;
 	playerPosition.y = undefined;
 	startGame();
-	console.log('Vidas: ' + '❤️'.repeat(livesPlayer));
 }
 
 function gameWin() {
@@ -196,7 +194,6 @@ function movePlayer() {
 	else if(enemiesCollision) levelFail();
 
 	game.fillText(':)', playerPosition.x, playerPosition.y);
-	console.log(playerPosition.x, playerPosition.y, giftPosition.x, giftPosition.y)
 }
 
 function moveUp() {
