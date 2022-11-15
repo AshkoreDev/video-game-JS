@@ -35,11 +35,16 @@ function setCanvasSize() {
 		?	canvasSize = window.innerWidth * 0.75
 		:	canvasSize = window.innerHeight * 0.75;
 
+	canvasSize = Number(canvasSize.toFixed(0));
+	
 	canvas.setAttribute('width', canvasSize);
 	canvas.setAttribute('height', canvasSize);
 
 	elementsSize = canvasSize / 10;
+	playerPosition.x = undefined;
+	playerPosition.y = undefined;
 	startGame();
+	console.log(canvasSize, elementsSize);
 }
 
 function startGame() {
@@ -100,7 +105,7 @@ function startGame() {
 			game.fillText(emoji, posX, posY);
 		});
 	});
-
+	console.log(playerPosition.x, playerPosition.y);
 	movePlayer();
 }
 
@@ -191,6 +196,7 @@ function movePlayer() {
 	else if(enemiesCollision) levelFail();
 
 	game.fillText(':)', playerPosition.x, playerPosition.y);
+	console.log(playerPosition.x, playerPosition.y, giftPosition.x, giftPosition.y)
 }
 
 function moveUp() {
