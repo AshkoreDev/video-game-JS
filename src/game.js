@@ -171,6 +171,11 @@ function gameWin() {
 		localStorage.setItem('record_time', playerTime);
 		message.innerText = 'Tu record fue de: ' + playerTime;
 	}
+
+	upBtn.style.display = 'none';
+	leftBtn.style.display = 'none';
+	rightBtn.style.display = 'none';
+	downBtn.style.display = 'none';
 }
 
 function showTime() {
