@@ -4,6 +4,7 @@ const upBtn = document.getElementById('upBtn');
 const leftBtn = document.getElementById('leftBtn');
 const rightBtn = document.getElementById('rightBtn');
 const downBtn = document.getElementById('downBtn');
+const reloadBtn = document.getElementById('reloadBtn');
 const lives = document.getElementById('lives');
 const time = document.getElementById('time');
 const record = document.getElementById('record');
@@ -240,6 +241,11 @@ function moveByKeys(event) {
 	else if (event.key == 'ArrowDown') moveDown();
 }
 
+function reloadGame() {
+
+	setTimeout(() => location.reload(), 1000);
+}
+
 window.addEventListener('load', setCanvasSize);
 window.addEventListener('resize', setCanvasSize);
 
@@ -248,3 +254,4 @@ leftBtn.addEventListener('click', moveLeft);
 rightBtn.addEventListener('click', moveRight);
 downBtn.addEventListener('click', moveDown);
 window.addEventListener('keydown', moveByKeys);
+reloadBtn.addEventListener('click', reloadGame);
