@@ -7,6 +7,14 @@ body{
 	padding:0
 }
 
+.inactive {
+	display: none;
+}
+
+.active {
+	display: block;
+}
+
 .game__container{
 	display:flex;
 	align-items:center;

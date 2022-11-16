@@ -172,10 +172,12 @@ function gameWin() {
 		message.innerText = 'Tu record fue de: ' + playerTime;
 	}
 
-	upBtn.style.display = 'none';
-	leftBtn.style.display = 'none';
-	rightBtn.style.display = 'none';
-	downBtn.style.display = 'none';
+	reloadBtn.classList.remove('active');
+	reloadBtn.classList.add('active');
+	upBtn.classList.add('inactive');
+	leftBtn.classList.add('inactive');
+	rightBtn.classList.add('inactive');
+	downBtn.classList.add('inactive');
 }
 
 function showTime() {
