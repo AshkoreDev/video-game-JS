@@ -10,10 +10,8 @@ const time = document.getElementById('time');
 const record = document.getElementById('record');
 const message = document.getElementById('message');
 
-
 const canvas = document.getElementById('game');
 const game = canvas.getContext('2d');
-
 
 let canvasSize;
 let elementsSize;
@@ -26,8 +24,6 @@ let livesPlayer = 3;
 let timeStart;
 let timePlayer;
 let timeInterval;
-
-
 
 
 function setCanvasSize() {
@@ -201,7 +197,7 @@ function movePlayer() {
 	if (giftCollisionX && giftCollisionY)	levelWin();
 	else if(enemiesCollision) levelFail();
 
-	game.fillText(':)', playerPosition.x, playerPosition.y);
+	game.fillText(emojis['PLAYER'],  playerPosition.x, playerPosition.y);
 }
 
 function moveUp() {
