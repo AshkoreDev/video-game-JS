@@ -47,7 +47,7 @@ function startGame() {
 
 	lives.innerText = '❤️'.repeat(livesPlayer);
 	
-	game.fillStyle = 'purple';
+	game.fillStyle = '#2C3333';
 	game.font = elementsSize + 'px Verdana';
 	game.textAlign = 'end';
 
